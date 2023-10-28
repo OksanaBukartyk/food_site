@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<h2>Helloo</h2>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum nihil officiis, quaerat officia cumque ipsa aut
+    adipisci ab, perferendis aperiam ipsum ut incidunt unde maiores. Doloribus, optio voluptatem. Quia, repudiandae?</p>
+
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum nihil officiis, quaerat officia cumque ipsa aut
+    adipisci ab, perferendis aperiam ipsum ut incidunt unde maiores. Doloribus, optio voluptatem. Quia, repudiandae?</p>
+
+
+{% for dish in dishes %}
+<img src="{{dish.image.url}}" alt="IMAGE">
+<h1> Title: {{dish.title}}</h1>     
+<p>Time: {{dish.time}}</p>
+<p>Portions: {{dish.portions}}</p>
+<p>Complexity: {{dish.complexity}}</p>
+
+
+<a href="{% url 'dish_detail_view' id=dish.id %}" class="btn btn-outline-dark" role="button" aria-pressed="true">More</a>
+<hr>
+{% endfor %}
+
+{% endblock content %}

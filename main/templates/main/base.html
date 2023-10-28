@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+</head>
+
+<body>
+    <div class="navbar">
+        <ul class="navbar-left-list"> 
+            <li class="navbar-element">
+                <a href="{% url 'index' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">Головна</a>
+            </li>
+            <li class="navbar-element">
+                <a href="{% url 'add_dish' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">Додати нову страву</a>
+            </li>
+        </ul>
+        <ul class="navbar-right-list">
+            <li class="navbar-element">
+                <a href="#" class="btn btn-outline-dark" role="button" aria-pressed="true">Вхід</a>
+            </li>
+            <li class="navbar-element">
+                <a href="#" class="btn btn-outline-dark" role="button" aria-pressed="true">Вихід</a>
+            </li>
+        </ul>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
