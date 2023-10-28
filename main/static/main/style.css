@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(196, 194, 180);
+}
+
+
+/* родитель */
+.navbar {
+    background-color: rgb(199, 175, 139);
+    width: 100vw;
+    
+}
+
+/* flex-контейнер */
+.navbar-left-list, .navbar-right-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.navbar-left-list{
+    justify-content: start;
+}
+
+.navbar-right-list{
+    justify-content: end;
+}
+
+/* flex-элемент */
+.navbar-element {
+    padding: 5px ;
+    margin: 0 15px;
+
+}
+
+/* контент */

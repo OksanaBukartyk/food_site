@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<img src="{{dish.image}}" alt="IMAGE">
+<h1> Title: {{dish.title}}</h1>
+<p>Description: {{dish.description}}</p>
+<p>Time: {{dish.time}}</p>
+<p>Portions: {{dish.portions}}</p>
+<p>Complexity: {{dish.complexity}}</p>
+<p>Video_url: {{dish.video_url}}</p>
+
+
+{% for ingredient in dish.ingredients.all %}
+<p>ingredient.title: {{ ingredient.title }}</p>
+{% endfor %}
+
+<a href="{% url 'index' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">back</a>
+<hr>
+{% endblock content %}
