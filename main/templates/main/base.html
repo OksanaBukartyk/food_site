@@ -22,12 +22,14 @@
             </li>
         </ul>
         <ul class="navbar-right-list">
-            <li class="navbar-element">
-                <a href="#" class="btn btn-outline-dark" role="button" aria-pressed="true">Вхід</a>
-            </li>
-            <li class="navbar-element">
-                <a href="#" class="btn btn-outline-dark" role="button" aria-pressed="true">Вихід</a>
-            </li>
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'profile' %}">Профіль</a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Вихід</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Вхід</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Реєстрація</a>
+            {% endif %}
+          </div>
         </ul>
     </div>
     {% block content %}{% endblock %}
