@@ -12,7 +12,7 @@ def dish_detail_view(request, id):
 
 def add_dish(request):
     if request.method == 'GET':
-        return render(request,'main/add_item.html',{'form': DishForm()})
+        return render(request,'main/dish_form.html',{'form': DishForm()})
     elif request.method == 'POST':
         form = DishForm(request.POST, request.FILES)
         if form.is_valid():
@@ -21,5 +21,21 @@ def add_dish(request):
             return redirect('index')
         else:
             messages.error(request, 'Помилки:')
-            return render(request,'main/add_item.html',{'form':form})
+            return render(request,'main/dish_form.html',{'form':form})
+    
+def edit_dish(request, id):
+    dish = Dish.objects.filter(id = id)
+    if request.method == 'GET':
+        context = {'form': DishForm(instance=dish), 'id': id}
+        return render(request,'main/dish_form.html',context)
+    
+    elif request.method == 'POST':
+        form = DishForm(request.POST, instance=dish)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Дані про покупця успішно оновлено!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Помилка:')
+            return render(request,'main/dish_form.html',{'form':form})
     

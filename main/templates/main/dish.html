@@ -8,6 +8,7 @@
 <p>Portions: {{dish.portions}}</p>
 <p>Complexity: {{dish.complexity}}</p>
 <p>Video_url: {{dish.video_url}}</p>
+<a href="{% url 'index'  %}" class="btn btn-outline-info" role="button" aria-pressed="true">Edit</a>
 
 
 {% for ingredient in dish.ingredients.all %}
