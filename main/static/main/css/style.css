@@ -8,7 +8,8 @@ body {
 /* родитель */
 .navbar {
     background-color: rgb(199, 175, 139);
-    width: 100vw;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -59,4 +60,93 @@ body {
 /* mouse over link */
 .navbar-element a:hover {
     color: rgb(47, 37, 18);
+}
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    margin: 0;
+}
+
+/* Caption text */
+.text {
+    background-color: rgba(255, 255, 255, 0.438);
+    color: black;
+    font-family: monospace;
+    padding: 35px 22px 52px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+
+}
+
+.slide-btn {
+    font-size: 20px;
+    color: white;
+    background-color: rgb(196, 162, 137);
+    padding: 15px 50px;
+    position: absolute;
+    top:80%;
+    left: calc(50% - 75px);
+   
+}
+
+.slide-btn:hover {
+    color: rgb(47, 37, 18);
+}
+
+
+.slide-title {
+    position: absolute;
+    bottom: 15vh;
+    width: 100%;
+}
+
+.slide-dots {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 1s ease;
+
+}
+
+.active {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+
+@keyframes fade {
+    from {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
 }

@@ -13,9 +13,11 @@
 
 <body>
     <div class="navbar">
-        <ul class="navbar-left-list"> 
+        <ul class="navbar-left-list">
             <li class="navbar-element">
-                <img width="60" height="60" src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/external-food-kitchen-flatart-icons-lineal-color-flatarticons.png" alt="external-food-kitchen-flatart-icons-lineal-color-flatarticons"/>
+                <img width="60" height="60"
+                    src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/external-food-kitchen-flatart-icons-lineal-color-flatarticons.png"
+                    alt="external-food-kitchen-flatart-icons-lineal-color-flatarticons" />
                 <a href="{% url 'index' %}" class="logo-btn" aria-pressed="true">Food</a>
             </li>
             <li class="navbar-element">
@@ -23,7 +25,8 @@
             </li>
             {% if user.is_authenticated %}
             <li class="navbar-element">
-                <a href="{% url 'add_dish' %}" class="navbar-btn" role="button" aria-pressed="true">Додати нову страву</a>
+                <a href="{% url 'add_dish' %}" class="navbar-btn" role="button" aria-pressed="true">Додати нову
+                    страву</a>
             </li>
             <li class="navbar-element">
                 <a href="{% url 'index' %}" class="navbar-btn" role="button" aria-pressed="true">Улюблені страви</a>
@@ -34,24 +37,77 @@
             {% if user.is_authenticated %}
 
             <li class="navbar-element">
-                <img width="40" height="40" src="https://img.icons8.com/carbon-copy/100/user.png" alt="user"/> <a class="navbar-btn" href="{% url 'profile' %}">Профіль</a></li>
+                <img width="40" height="40" src="https://img.icons8.com/carbon-copy/100/user.png" alt="user" /> <a
+                    class="navbar-btn" href="{% url 'profile' %}">Профіль</a>
+            </li>
             <li class="navbar-element"> <a class="navbar-btn" href="{% url 'logout' %}">Вихід</a></li>
-           
-            
+
+
             {% else %}
             <li class="navbar-element">
-                 <img width="40" height="40" src="https://img.icons8.com/carbon-copy/100/user.png" alt="user"/>
-                <a class="navbar-btn" href="{% url 'login' %}">Вхід</a></li>
-           
+                <img width="40" height="40" src="https://img.icons8.com/carbon-copy/100/user.png" alt="user" />
+                <a class="navbar-btn" href="{% url 'login' %}">Вхід</a>
+            </li>
+
             {% endif %}
-          </div>
-        </ul>
     </div>
+    </ul>
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="https://html5css.ru/edithtm/img_snow_wide.jpg" style="width:100%">
+
+        </div>
+
+        <div class="mySlides fade">
+            <img src="https://html5css.ru/edithtm/img_mountains_wide.jpg" style="width:100%">
+
+        </div>
+
+        <div class="mySlides fade">
+            <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" style="width:100%">
+        </div>
+        <div class="slide-title">
+            <div class="text"><h1>Caption Text</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, rem.</p>
+                <a class="slide-btn" href="{% url 'index' %}">More</a>  
+            </div>
+            
+        </div>
+        <div class="slide-dots"  style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <br>
+
     {% block content %}{% endblock %}
 
 
+    <script>
+        var slideIndex = 0;
+        showSlides();
 
-    
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+
 </body>
 
 </html>
