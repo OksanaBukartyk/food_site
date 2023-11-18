@@ -7,8 +7,7 @@ body {
 /* -------- головна навігаційна панель --------*/
 /* родитель */
 .navbar {
-  background-color: rgb(199, 175, 139);
-  margin: 0;
+  margin:5px 15%;
   padding: 0;
 
 }
@@ -34,12 +33,15 @@ body {
 }
 
 /* flex-элемент */
-.navbar-element {
+.navbar-element{
   padding: 5px;
   margin: 0 15px;
 
 }
-
+.dropdown-menu{
+  padding: 15px;
+margin: 0 15%;
+}
 .navbar-btn,
 .logo-btn {
   vertical-align: middle;
@@ -155,7 +157,7 @@ body {
 
 /* -------- картки продуктів в вигляді каруселі -------- */
 .carousel{
-margin:  20px 10%;
+  margin:5px 15%;
 }
 .cards-wrapper {
   display: flex;
@@ -166,6 +168,7 @@ margin:  20px 10%;
   max-height: 100%;
 }
 .card {
+  cursor: pointer;
   margin: 0 0.5em;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
   border: none;
@@ -187,6 +190,16 @@ margin:  20px 10%;
   .card img {
     height: 11em;
   }
+}
+
+
+/* --------   footer   -------- */
+
+footer{
+  border-top: 1px solid rgb(109, 105, 105);
+  margin: 0;
+  padding-top: 5px;
+  text-align: center;
 }
 
 

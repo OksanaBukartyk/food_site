@@ -1,3 +1,8 @@
+function redirectToDish(element) {
+  window.location.href = element.getAttribute('data-url');
+};
+
+
 var slideIndex = 0;
 showSlides();
 
