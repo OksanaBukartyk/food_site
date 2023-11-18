@@ -1,152 +1,193 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(241, 240, 233);
+  margin: 0;
+  padding: 0;
+  background-color: rgb(241, 240, 233);
 }
 
-
+/* -------- головна навігаційна панель --------*/
 /* родитель */
 .navbar {
-    background-color: rgb(199, 175, 139);
-    margin: 0;
-    padding: 0;
+  background-color: rgb(199, 175, 139);
+  margin: 0;
+  padding: 0;
 
 }
 
 /* flex-контейнер */
 .navbar-left-list,
 .navbar-right-list {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-left-list {
-    justify-content: start;
+  justify-content: start;
 
 }
 
 .navbar-right-list {
-    justify-content: end;
+  justify-content: end;
 }
 
 /* flex-элемент */
 .navbar-element {
-    padding: 5px;
-    margin: 0 15px;
+  padding: 5px;
+  margin: 0 15px;
 
 }
 
 .navbar-btn,
 .logo-btn {
-    vertical-align: middle;
-    font-size: 20px;
-    font-weight: 500;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: rgb(88, 70, 27);
+  vertical-align: middle;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(88, 70, 27);
 }
 
 .navbar-btn {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .logo-btn {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 /* mouse over link */
 .navbar-element a:hover {
-    color: rgb(47, 37, 18);
+  color: rgb(47, 37, 18);
 }
 
 
-
+/* -------- слайд прокрутка -------- */
 /* Slideshow container */
 .slideshow-container {
-    position: relative;
-    margin: 0;
+  position: relative;
+  margin: 0;
 }
 
 /* Caption text */
 .text {
-    background-color: rgba(255, 255, 255, 0.438);
-    color: black;
-    font-family: monospace;
-    padding: 35px 22px 52px;
-    width: 50%;
-    margin: auto;
-    text-align: center;
+  background-color: rgba(255, 255, 255, 0.438);
+  color: black;
+  font-family: monospace;
+  padding: 35px 22px 52px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
 
 }
 
 .slide-btn {
-    font-size: 20px;
-    color: white;
-    background-color: rgb(196, 162, 137);
-    padding: 15px 50px;
-    position: absolute;
-    top:80%;
-    left: calc(50% - 75px);
-   
+  font-size: 20px;
+  color: white;
+  background-color: rgb(196, 162, 137);
+  padding: 15px 50px;
+  position: absolute;
+  top: 85%;
+  left: calc(50% - 75px);
+
 }
 
 .slide-btn:hover {
-    color: rgb(47, 37, 18);
+  color: rgb(47, 37, 18);
 }
 
 
 .slide-title {
-    position: absolute;
-    bottom: 15vh;
-    width: 100%;
+  position: absolute;
+  bottom: 15vh;
+  width: 100%;
 }
 
 .slide-dots {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 1s ease;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 1s ease;
 
 }
 
-.active {
-    background-color: #717171;
+.slide-dots>.active {
+  background-color: #4b4747;
 }
 
 /* Fading animation */
 .fade {
 
-    animation-name: fade;
-    animation-duration: 2s;
+  animation-name: fade;
+  animation-duration: 2s;
 }
 
 
 @keyframes fade {
-    from {
-        opacity: .5
-    }
+  from {
+    opacity: .5
+  }
 
-    to {
-        opacity: 1
-    }
+  to {
+    opacity: 1
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-    .text {
-        font-size: 11px
-    }
+  .text {
+    font-size: 11px
+  }
 }
+
+
+
+/* -------- картки продуктів в вигляді каруселі -------- */
+.carousel{
+margin:  20px 10%;
+}
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.card {
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+  border-radius: 0;
+}
+.carousel-inner {
+  padding: 1em;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #685835;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media (min-width: 768px) {
+  .card img {
+    height: 11em;
+  }
+}
+
+
+/* --------      -------- */
