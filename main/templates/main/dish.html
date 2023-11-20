@@ -1,20 +1,34 @@
 {% extends "main/base.html" %}
 {% block content %}
 
-<img src="{{dish.image}}" alt="IMAGE">
-<h1> Title: {{dish.title}}</h1>
-<p>Description: {{dish.description}}</p>
-<p>Time: {{dish.time}}</p>
-<p>Portions: {{dish.portions}}</p>
-<p>Complexity: {{dish.complexity}}</p>
-<p>Video_url: {{dish.video_url}}</p>
-<a href="{% url 'index'  %}" class="btn btn-outline-info" role="button" aria-pressed="true">Edit</a>
+<a href="{% url 'index' %}"  role="button" aria-pressed="true">Home</a>/{{dish.title}}
+
+<div class="card">
+    <div class="row g-0">
+        <div class="col-sm-5">
+            
+            <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top h-100" alt="...">
+        </div>
+        <div class="col-sm-7">
+            <div class="card-body">
+                <h5 class="card-title">{{dish.title}}</h5>
+                <p>Description: {{dish.description}}</p>
+                <p>Time: {{dish.time}}</p>
+                <p>Portions: {{dish.portions}}</p>
+                <p>Complexity: {{dish.complexity}}</p>
+                <p>Video_url: {{dish.video_url}}</p>
+                <a href="{% url 'index'  %}" class="btn btn-outline-info" role="button" aria-pressed="true">Edit</a>
 
 
-{% for ingredient in dish.ingredients.all %}
-<p>ingredient.title: {{ ingredient.title }}</p>
-{% endfor %}
+                {% for ingredient in dish.ingredients.all %}
+                <p>ingredient.title: {{ ingredient.title }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 
-<a href="{% url 'index' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">back</a>
+
+
 <hr>
 {% endblock content %}

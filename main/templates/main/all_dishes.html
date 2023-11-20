@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<div class="card-deck">
+    {% for dish in dishes %}
+
+    <div class="card">
+        <img class="card-img-top" src="https://html5css.ru/edithtm/img_nature_wide.jpg" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">{{dish.title}}</h4>
+          <p class="card-text">{{dish.description}}</p>
+          <a href="{% url 'dish_detail_view' id=dish.id %}" class="btn btn-outline-info">See more</a>
+        </div>
+      </div>
+
+
+
+    {% endfor %}
+</div>
+
+{% endblock content %}

@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
 </head>
 
+
 <body>
     <div class="navbar">
         <ul class="navbar-left-list">
@@ -25,10 +26,10 @@
                     data-toggle="dropdown">Категорії
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    <li><a class="navbar-btn" href="#">Перші страви</a></li>
-                    <li><a class="navbar-btn" href="#">Другі страви</a></li>
-                    <li><a class="navbar-btn" href="#">Салати</a></li>
-                    <li><a class="navbar-btn" href="#">Консервація та соління</a></li>
+                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Перші страви</a></li>
+                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Другі страви</a></li>
+                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Салати</a></li>
+                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Консервація та соління</a></li>
                 </ul>
             </li>
             {% if user.is_authenticated %}
@@ -58,9 +59,9 @@
     </div>
     {% block content %}
     {% endblock %}
-    <footer>
-        <p>© 2023 Created by OB</p>
-    </footer>
+<footer>
+    <p>© 2023 Created by OB</p>
+</footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

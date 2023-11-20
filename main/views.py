@@ -5,10 +5,15 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    return render(request, 'main/index.html', context={'dishes': Dish.objects.all()})
+    return render(request, 'main/index.html')
+
+
+
+def dishes(request):
+    return render(request, 'main/all_dishes.html', context={'dishes': Dish.objects.all()})
 
 def dish_detail_view(request, id):
-    return render(request, 'main/dish.html', context={'dish': Dish.objects.filter(id = id)})
+    return render(request, 'main/dish.html', context={'dish': Dish.objects.get(id=id)})
 
 def add_dish(request):
     if request.method == 'GET':
