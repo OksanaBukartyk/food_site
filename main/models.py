@@ -1,6 +1,14 @@
 from django.db import models
 
 # Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} ({self.parent})"
+
+
 
 class Dish(models.Model):
     title = models.CharField(max_length=30)
@@ -15,16 +23,11 @@ class Dish(models.Model):
     complexity = models.CharField(max_length = 50, choices=complexity_choices)
     portions =  models.IntegerField(default=0)
     video_url = models.CharField(max_length=50)
+    category = models.ForeignKey(Category, null=True, related_name='dishes', on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.title} {self.description[:20]}..."
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.name} ({self.parent})"
 
 class Ingredient(models.Model):
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE, related_name="ingredients")

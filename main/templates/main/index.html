@@ -27,143 +27,45 @@
 
 <br>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="cards-wrapper">
-
-        <div class="card" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-          <div class="container">
-            <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-            <div class="overlay">
-              <div class="text-overlay">See more...</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Перші страви</h5>
-            <p class="card-text">Страви з м’ясом <br> Овочеві супи<br>Холодні супи<br>Борщі<br>Інші супи</p>
-          </div>
-        </div>
-        <div class="card d-none d-md-block" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-          <div class="container">
-            <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-            <div class="overlay">
-              <div class="text-overlay">See more...</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Другі страви</h5>
-            <p class="card-text">Гарніри<br>Холодні страви<br>Гарніри з овочів<br>Запіканки<br>М'ясні страви<br>Рибні та грибні страви</p>
-          </div>
-        </div>
-        <div class="card d-none d-md-block" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-          <div class="container">
-            <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-            <div class="overlay">
-              <div class="text-overlay">See more...</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Салати</h5>
-            <p class="card-text">Овочеві салати<br>Салати з рибою та грибами<br>Салати з м’ясом<br>Фруктові та ягідні салати</p>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="carousel-item ">
-        <div class="cards-wrapper">
-          <div class="card" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-            <div class="container">
-              <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-              <div class="overlay">
-                <div class="text-overlay">See more...</div>
+  <div class="carousel-inner">
+      {% for category in categories %}
+          {% if forloop.first or forloop.counter0|divisibleby:3 %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <div class="cards-wrapper">
+          {% endif %}
+          
+          <div class="card" data-url="{% url 'dishes' category_name=category.name %}" onclick="redirectToDish(this)">
+              <div class="container">
+                <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
+                  <div class="overlay">
+                      <div class="text-overlay">See more...</div>
+                  </div>
               </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Консервація та соління</h5>
-              <p class="card-text">Овочі<br>Фрукти та ягоди<br>Гриби<br>Джеми та варення<br>Різні соління та маринади</p>
-            </div>
-          </div>
-          <div class="card d-none d-md-block" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-            <div class="container">
-              <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-              <div class="overlay">
-                <div class="text-overlay">See more...</div>
+              <div class="card-body">
+                  <h5 class="card-title">{{ category.name }}</h5>
+                  <p class="card-text">
+                      {% for subcategory in category.children.all %}
+                          {{ subcategory.name }}<br>
+                      {% endfor %}
+                  </p>
               </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Напої</h5>
-              <p class="card-text">Алкогольні напої (вина) <br> Різні напої</p>
-            </div>
           </div>
-          <div class="card d-none d-md-block" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-            <div class="container">
-              <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-              <div class="overlay">
-                <div class="text-overlay">See more...</div>
+          
+          {% if forloop.last or forloop.counter|divisibleby:3 %}
+                  </div>
               </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Десерти</h5>
-              <p class="card-text">Торти<br>Пироги<br>Тістечка<br>Печиво<br>Креми та глазурі<br>Інша випічка<br>Різні солодощі</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="cards-wrapper">
-          <div class="card" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-            <div class="container">
-              <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-              <div class="overlay">
-                <div class="text-overlay">See more...</div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">{{ category }} 777</h5>
-              
-              <p class="card-text">
-                {%for cat in category.children.all%}
-                {{ cat.name }}<br>
-                {%endfor%}
-              </p>
-
-            </div>
-          </div>
-          <div class="card d-none d-md-block" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-            <div class="container">
-              <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-              <div class="overlay">
-                <div class="text-overlay">See more...</div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Category 8</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-            </div>
-          </div>
-          <div class="card d-none d-md-block" data-url="{% url 'dishes' %}" onclick="redirectToDish(this)">
-            <div class="container">
-              <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
-              <div class="overlay">
-                <div class="text-overlay">See more...</div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Category 9</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          {% endif %}
+      {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
-    </a>
-  </div>
+  </a>
+</div>
+
+
 {% endblock content %}

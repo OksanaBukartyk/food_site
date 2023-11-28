@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Dish, Ingredient
+from .models import Dish, Ingredient, Category
 from .forms import DishForm, IngredientForm
 from django.contrib import messages
 # Create your views here.
@@ -9,8 +9,12 @@ def index(request):
 
 
 
-def dishes(request):
-    return render(request, 'main/all_dishes.html', context={'dishes': Dish.objects.all()})
+def dishes(request, category_name):
+    category = get_object_or_404(Category, name=category_name)
+    subcategories = category.children.all()  # Отримати всі підкатегорії
+    subcategories = subcategories | Category.objects.filter(pk=category.pk)  # Додати саму категорію до списку
+    dishes = Dish.objects.filter(category__in=subcategories)
+    return render(request, 'main/all_dishes.html', context={'dishes': dishes, 'category': category})
 
 def dish_detail_view(request, id):
     return render(request, 'main/dish.html', context={'dish': Dish.objects.get(id=id)})

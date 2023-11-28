@@ -26,12 +26,9 @@
                     data-toggle="dropdown">Категорії
                 </a>
 
-
-
-
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                     {% for category in categories %}
-                    <li><a class="navbar-btn" href="{% url 'dishes' %}">{{ category.name }}</a></li>
+                    <li><a class="navbar-btn" href="{% url 'dishes' category_name=category.name %}">{{ category.name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
