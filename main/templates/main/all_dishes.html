@@ -5,7 +5,12 @@
     {% for dish in dishes %}
 
     <div class="card">
-        <img class="card-img-top" src="https://html5css.ru/edithtm/img_nature_wide.jpg" alt="Card image">
+      <div class="container">
+        <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
+        <div class="overlay">
+          <div class="text-overlay">See more...</div>
+        </div>
+      </div>
         <div class="card-body">
           <h4 class="card-title">{{dish.title}}</h4>
           <p class="card-text">{{dish.description}}</p>

@@ -25,11 +25,14 @@
                 <a href="" class="navbar-btn dropdown-toggle dropdown-toggle-split" id="menu1" role="button"
                     data-toggle="dropdown">Категорії
                 </a>
+
+
+
+
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Перші страви</a></li>
-                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Другі страви</a></li>
-                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Салати</a></li>
-                    <li><a class="navbar-btn" href="{% url 'dishes' %}">Консервація та соління</a></li>
+                    {% for category in categories %}
+                    <li><a class="navbar-btn" href="{% url 'dishes' %}">{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
             {% if user.is_authenticated %}
