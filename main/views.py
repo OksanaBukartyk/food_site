@@ -25,7 +25,8 @@ def add_dish(request):
     elif request.method == 'POST':
         form = DishForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            dish = form.save(commit=False)
+            dish.save()
             messages.success(request, 'успішно доданий.')
             return redirect('index')
         else:

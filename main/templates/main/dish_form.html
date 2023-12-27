@@ -3,12 +3,13 @@
 {% block content %}
 
 <div class="content-section">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Форма {% if id %} редагуваня {% else %} додавання {% endif %}
                 {{title_name}}</legend>
                 {{ form|crispy }}
+                {{ form2|crispy }}
         </fieldset>
         <input class='btn btn-outline-success' type="submit" value="Зберегти" />
     </form>

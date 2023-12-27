@@ -1,15 +1,11 @@
 {% extends "main/base.html" %}
 {% block content %}
 <div class="slideshow-container">
+    {% for category in categories %}
     <div class="mySlides fade">
-        <img src="https://html5css.ru/edithtm/img_snow_wide.jpg" style="width:100%">
+        <img src="{{ category.image.url }}" style="width:100%">
     </div>
-    <div class="mySlides fade">
-        <img src="https://html5css.ru/edithtm/img_mountains_wide.jpg" style="width:100%">
-    </div>
-    <div class="mySlides fade">
-        <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" style="width:100%">
-    </div>
+    {% endfor %}
     <div class="slide-title">
         <div class="text">
             <h1>Caption Text</h1>
@@ -18,10 +14,11 @@
             <a class="slide-btn" href="{% url 'index' %}">More</a>
         </div>
     </div>
+    
     <div class="slide-dots" style="text-align:center">
+        {% for category in categories %}
         <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        {% endfor %}
     </div>
 </div>
 
@@ -36,17 +33,19 @@
           
           <div class="card" data-url="{% url 'dishes' category_name=category.name %}" onclick="redirectToDish(this)">
               <div class="container">
-                <img src="https://html5css.ru/edithtm/img_nature_wide.jpg" class="card-img-top " alt="...">
+                <img src="{{ category.image.url }}" class="card-img-top " alt="...">
                   <div class="overlay">
                       <div class="text-overlay">See more...</div>
                   </div>
               </div>
               <div class="card-body">
-                  <h5 class="card-title">{{ category.name }}</h5>
+                  <h3 class="card-title">{{ category.name }}</h3>
                   <p class="card-text">
-                      {% for subcategory in category.children.all %}
-                          {{ subcategory.name }}<br>
+                    <ul>
+                        {% for subcategory in category.children.all %}
+                          <li> {{ subcategory.name }}<br></li>
                       {% endfor %}
+                    </ul>
                   </p>
               </div>
           </div>
