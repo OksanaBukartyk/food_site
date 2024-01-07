@@ -1,27 +1,30 @@
 {% extends "main/base.html" %}
 {% block content %}
-
+{% if category.name%}
 <h1>{{category.name}}</h1>
-
+{% elif title %}
+<h1>{{title}}</h1>
+{%else%}
+<h1>Наші страви</h1>
+{%endif%}
 
 {% if dishes %}
 <div class="card-deck">
-    {% for dish in dishes %}
-    <div class="card">
-      <div class="container">
-        <img src="{{ dish.image.url }}" class="card-img-top " alt="...">
-        <div class="overlay">
-          <div class="text-overlay">See more...</div>
-        </div>
+  {% for dish in dishes %}
+  <div class="card" data-url="{% url 'dish_detail_view' id=dish.id  %}" onclick="redirectToDish(this)">
+    <div class="container">
+      <img src="{{ dish.image.url }}" class="card-img-top " alt="...">
+      <div class="overlay">
+        <div class="text-overlay">See more...</div>
       </div>
-        <div class="card-body">
-          <h4 class="card-title">{{dish.title}}</h4>
-          <p class="card-text">{{dish.description}}</p>
-
-          <a href="{% url 'dish_detail_view' id=dish.id %}" class="btn btn-outline-info">See more</a>
-        </div>
-      </div>
-    {% endfor %}
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{dish.title}}</h4>
+      <p class="card-text">{{dish.description|slice:":70"}}...</p>
+      <a href="{% url 'dish_detail_view' id=dish.id %}" class="btn btn-block">See more</a>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 {%else%}
 <h4>No dishes</h4>

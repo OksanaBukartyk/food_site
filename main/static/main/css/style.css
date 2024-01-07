@@ -9,11 +9,12 @@ body {
 /* -------- головна навігаційна панель --------*/
 /* родитель */
 .navbar {
-  margin:5px 15%;
+  margin: 5px 15%;
   padding: 0;
 
 }
-h1{
+
+h1 {
   margin: 50px auto;
   text-align: center;
 }
@@ -39,15 +40,17 @@ h1{
 }
 
 /* flex-элемент */
-.navbar-element{
+.navbar-element {
   padding: 5px;
   margin: 0 15px;
 
 }
-.dropdown-menu{
+
+.dropdown-menu {
   padding: 15px;
-margin: 0 15%;
+  margin: 0 15%;
 }
+
 .navbar-btn,
 .logo-btn {
   vertical-align: middle;
@@ -76,10 +79,12 @@ margin: 0 15%;
   position: relative;
   margin: 0;
 }
-.slideshow-container img{
+
+.slideshow-container img {
   height: 70vh;
-  object-fit:cover ;
+  object-fit: cover;
 }
+
 /* Caption text */
 .text {
   background-color: rgba(255, 255, 255, 0.438);
@@ -162,18 +167,21 @@ margin: 0 15%;
 
 
 /* -------- картки продуктів в вигляді каруселі -------- */
-.carousel{
-  margin:5px 15%;
+.carousel {
+  margin: 5px 15%;
 }
+
 .cards-wrapper {
   display: flex;
   justify-content: center;
 }
+
 .carousel .card img {
   max-width: 100%;
   max-height: 100%;
-  object-fit:cover ;
+  object-fit: cover;
 }
+
 .carousel .card {
   cursor: pointer;
   width: 300px;
@@ -183,9 +191,11 @@ margin: 0 15%;
   border: none;
   border-radius: 0;
 }
+
 .carousel-inner {
   padding: 1em;
 }
+
 .carousel-control-prev,
 .carousel-control-next {
   background-color: #685835;
@@ -195,35 +205,50 @@ margin: 0 15%;
   top: 50%;
   transform: translateY(-50%);
 }
+
 @media (min-width: 768px) {
   .card img {
     height: 11em;
   }
 }
 
-.card{
+.card {
   max-width: 330px;
 }
+
+.card .btn , .btn-favourite{
+  height: 45px;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(196, 162, 137);
+}
+
+
+.card .btn:hover, .btn-favourite:hover {
+  color: rgb(47, 37, 18);
+}
+
 /* --------   footer   -------- */
 
-footer{
+footer {
   border-top: 1px solid rgb(109, 105, 105);
   margin-top: 80px;
   padding-top: 5px;
   text-align: center;
-  
+
 }
 
 
 /* --------  сторінка входу та реєстрації    -------- */
-.content-section{
-  margin:5px 35%;
+.content-section {
+  margin: 5px 35%;
 }
-.content-section legend{
+
+.content-section legend {
   text-align: center;
 }
 
-.card-deck{
+.card-deck {
   margin: 100px 50px;
 }
 
@@ -248,7 +273,7 @@ footer{
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #78898f8c;
+  background-color: #78898fae;
   overflow: hidden;
   width: 100%;
   height: 0;
@@ -269,3 +294,67 @@ footer{
   -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
+/* --------  сторінка страви    -------- */
+.dish-page {
+  margin: 5px 15%;
+}
+
+.dish-page img {
+  height: 70vh;
+  width: 70vh;
+}
+
+
+.dish-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.dish-main-img{
+  height: 70vh;
+  object-fit: cover;
+}
+
+.dish-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 35px 22px 52px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  color: #685835;
+  background-color: rgba(255, 255, 255, 0.685);
+}
+
+
+.dish-icon{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.dish-title .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+ font-size: 20px;
+}
+
+
+.dish-info{
+  margin: 5px 15%;
+
+}
+#ingredients{
+  display: none;
+}
+
+.info-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0;}
+
+

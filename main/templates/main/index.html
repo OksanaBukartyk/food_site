@@ -8,10 +8,9 @@
     {% endfor %}
     <div class="slide-title">
         <div class="text">
-            <h1>Caption Text</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, rem. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum nihil officiis, quaerat officia cumque ipsa aut
-                adipisci ab, perferendis aperiam ipsum ut incidunt unde maiores. Doloribus, optio voluptatem. Quia, repudiandae?</p>
-            <a class="slide-btn" href="{% url 'index' %}">More</a>
+            <h1>Смачного!</h1>
+            <p>Завдяки цьому сайту ти зможеш підібрати будь-яку страву, щоб приготувати. Знайти по певному інгредієнту, добавити нові страви, зберігати улюблені тощо.</p>
+            <a class="slide-btn" href="{% url 'all_dishes' %}">Перейти</a>
         </div>
     </div>
     
@@ -31,7 +30,7 @@
                   <div class="cards-wrapper">
           {% endif %}
           
-          <div class="card" data-url="{% url 'dishes' category_name=category.name %}" onclick="redirectToDish(this)">
+          <div class="card" data-url="{% url 'dishes_by_category' category_name=category.name %}" onclick="redirectToDish(this)">
               <div class="container">
                 <img src="{{ category.image.url }}" class="card-img-top " alt="...">
                   <div class="overlay">

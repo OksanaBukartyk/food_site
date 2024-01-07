@@ -28,7 +28,7 @@
 
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                     {% for category in categories %}
-                    <li><a class="navbar-btn" href="{% url 'dishes' category_name=category.name %}">{{ category.name }}</a></li>
+                    <li><a class="navbar-btn" href="{% url 'dishes_by_category' category_name=category.name %}">{{ category.name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -38,7 +38,7 @@
                     страву</a>
             </li>
             <li class="navbar-element">
-                <a href="{% url 'index' %}" class="navbar-btn" role="button" aria-pressed="true">Улюблені страви</a>
+                <a href="{% url 'favorite_dishes' %}" class="navbar-btn" role="button" aria-pressed="true">Улюблені страви</a>
             </li>
             {% endif %}
         </ul>

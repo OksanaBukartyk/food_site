@@ -23,6 +23,10 @@ function showSlides() {
     setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 
+
+
+
+
 (function(){
     // setup your carousels as you normally would using JS
     // or via data attributes according to the documentation
@@ -50,3 +54,19 @@ function showSlides() {
       }
     });
   }());
+
+// перехід між ingredients та description
+  function viewDiv() {
+    let ingredients = document.getElementById('ingredients');
+    let style = getComputedStyle(ingredients); // отримуємо його стилі
+    if (style.display === 'none') {
+      document.getElementById('ingredients').style.display='block';
+      document.getElementById('description').style.display='none';
+      } else if (style.display !== 'none') {
+      document.getElementById('ingredients').style.display='none';
+      document.getElementById('description').style.display='block';
+  
+    }
+  };
+
+  

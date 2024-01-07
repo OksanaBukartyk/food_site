@@ -1,33 +1,77 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block content %}
 
-<a href="{% url 'index' %}"  role="button" aria-pressed="true">Home</a>/{{dish.title}}
+<div class="dish-container  text-center">
+    <img class="dish-main-img" src="{{ dish.image.url }}" style="width:100%">
+    <div class="dish-title">
 
-<div class="card">
-    <div class="row g-0">
-        <div class="col-sm-5">
-            <img src="{{ dish.image.url }}" class="card-img-top h-100" alt="...">
+        <h1>{{dish.title}}</h1>
+        <div class="wrapper">
+            <div><img class="dish-icon" src="{% static 'main/images/time.png' %}" alt="">{{dish.time}} хв</div>
+            <div><img class="dish-icon" src="{% static 'main/images/portions.png' %}" alt=""> {{dish.portions}}</div>
+            <div><img class="dish-icon" src="{% static 'main/images/star.png' %}" alt="">{{dish.complexity}}</div>
         </div>
-        <div class="col-sm-7">
-            <div class="card-body">
-                <h5 class="card-title">{{dish.title}}</h5>
-                <p>Description: {{dish.description}}</p>
-                <p>Time: {{dish.time}}</p>
-                <p>Portions: {{dish.portions}}</p>
-                <p>Complexity: {{dish.complexity}}</p>
-                <p>Video_url: {{dish.video_url}}</p>
-                <a href="{% url 'index'  %}" class="btn btn-outline-info" role="button" aria-pressed="true">Edit</a>
+        <hr>
+        {% if user.is_authenticated and not is_favorite %}
+       
+        <a href="{% url 'add_to_favorites' id=dish.id  %}" class="btn-favourite p-2 mt-5">Додати до улюбленого</a>
+        {% elif is_favorite %}
+    <p>Цю страву вже додано до улюблених.</p>
+  {% else %}
+
+        <p>Щоб зберегти до улюбленого, необхідно авторизуватись.</p>
+        {% endif %}
+    
 
 
-                {% for ingredient in dish.ingredients.all %}
-                <p>ingredient.title: {{ ingredient.title }}</p>
-                {% endfor %}
+
+    </div>
+</div>
+<br>
+
+
+<div class="dish-info">
+    <div id="description">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Description</h3>
+                    <p>{{dish.description}}</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum voluptatem, omnis laudantium vel
+                        maxime inventore tenetur recusandae suscipit facere. Quas animi at consequuntur atque, quod
+                        alias doloremque vero quis aliquid?</p>
+                    <p>URL: {{dish.video_url}}</p>
+                </div>
+                <div class="col-sm-6 p-0 m-0">
+                    <img class="info-img" src="{{ dish.image.url }}" alt="">
+                    <div class="overlay" onmousedown="viewDiv()">
+                        <div class="text-overlay">Переглянути інгредієнти</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ingredients">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 p-0 m-0">
+                    <img class="info-img" src="{{ dish.image.url }}" alt="" onmousedown="viewDiv()">
+                    <div class="overlay" onmousedown="viewDiv()">
+                        <div class="text-overlay">Переглянути опис приготування</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h3>Ingredients</h3>
+                    {% for ingredient in dish.ingredients.all %}
+                    <p> {{ ingredient.title }} - {{ingredient.count}} {{ingredient.variable}}</p>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script></script>
 
 
-
-<hr>
 {% endblock content %}
