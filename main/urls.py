@@ -15,8 +15,9 @@ urlpatterns = [
     path('dish/create/', views.add_dish, name='add_dish'),
     path('dish/edit/<int:id>/', views.edit_dish, name='edit_dish'),
     path('add_to_favorites/<int:id>/', views.add_to_favorites, name='add_to_favorites'),
-    path('favorite_dishes/', views.favorite_dishes, name='favorite_dishes'),
-
+    path('delete_from_favorites/<int:id>/', views.delete_from_favorites, name='delete_from_favorites'),
+    path('favorite_dishes', views.favorite_dishes, name='favorite_dishes'),
+    path('add_ingredients/<int:dish_id>/', views.add_ingredients, name='add_ingredients'),
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

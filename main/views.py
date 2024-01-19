@@ -14,7 +14,14 @@ def add_to_favorites(request, id):
     dish = get_object_or_404(Dish, pk=id)
     favorite_dish, created = FavoriteDish.objects.get_or_create(user=request.user)
     favorite_dish.favorite_dishes.add(dish)
-    return render(request, 'main/index.html')
+    return render(request, 'main/dish.html', context={'dish': dish, 'is_favorite': True})
+
+@login_required
+def delete_from_favorites(request, id):
+    dish = get_object_or_404(Dish, pk=id)
+    favorite_dish = FavoriteDish.objects.get(user=request.user)
+    favorite_dish.favorite_dishes.remove(dish)
+    return render(request, 'main/dish.html', context={'dish': dish, 'is_favorite': False})
 
 def dishes_by_category(request, category_name):
     category = get_object_or_404(Category, name=category_name)
@@ -53,11 +60,28 @@ def add_dish(request):
             dish = form.save(commit=False)
             dish.save()
             messages.success(request, 'успішно доданий.')
-            return redirect('index')
+            return redirect('add_ingredients')
         else:
             messages.error(request, 'Помилки:')
             return render(request,'main/dish_form.html',{'form':form})
     
+
+
+def add_ingredients(request, dish_id):
+    if request.method == 'GET':
+        return render(request,'main/dish_form.html',{'form': IngredientForm()})
+    elif request.method == 'POST':
+        form = IngredientForm(request.POST, request.FILES)
+        if form.is_valid():
+            dish = form.save(commit=False)
+            dish.save()
+            messages.success(request, 'успішно доданий.')
+            return redirect('all_dishes')
+        else:
+            messages.error(request, 'Помилки:')
+            return render(request,'main/dish_form.html',{'form':form})
+    
+
 def edit_dish(request, id):
     dish = Dish.objects.filter(id = id)
     if request.method == 'GET':

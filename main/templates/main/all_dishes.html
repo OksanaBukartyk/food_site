@@ -8,25 +8,38 @@
 <h1>Наші страви</h1>
 {%endif%}
 
-{% if dishes %}
-<div class="card-deck">
-  {% for dish in dishes %}
-  <div class="card" data-url="{% url 'dish_detail_view' id=dish.id  %}" onclick="redirectToDish(this)">
-    <div class="container">
-      <img src="{{ dish.image.url }}" class="card-img-top " alt="...">
-      <div class="overlay">
-        <div class="text-overlay">See more...</div>
-      </div>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">{{dish.title}}</h4>
-      <p class="card-text">{{dish.description|slice:":70"}}...</p>
-      <a href="{% url 'dish_detail_view' id=dish.id %}" class="btn btn-block">See more</a>
-    </div>
+<div class="category-navbar">
+  <div class="category-item">
+    <a class="navbar-btn" href="{% url 'all_dishes' %}">Всі страви</a></li>
+  </div>
+  {% for category in categories %}
+  <div class="category-item">
+    <a class="navbar-btn" href="{% url 'dishes_by_category' category_name=category.name %}">{{ category.name }}</a></li>
   </div>
   {% endfor %}
 </div>
-{%else%}
-<h4>No dishes</h4>
-{%endif%}
-{% endblock content %}
+
+{% if dishes %}
+<div class="card-deck ">
+  {% for dish in dishes %}
+  <div class="col-md-3 mb-4">
+    <div class="card" data-url="{% url 'dish_detail_view' id=dish.id  %}" onclick="redirectToDish(this)" style="height: 390px;">
+      <div class="container">
+        <img src="{{ dish.image.url }}" class="card-img-top " alt="...">
+        <div class="overlay">
+          <div class="text-overlay">See more...</div>
+        </div>
+      </div>
+      <div class="card-body d-flex flex-column">
+        <h4 class="card-title">{{dish.title}}</h4>
+        <p class="card-text">{{dish.description|slice:":70"}}...</p>
+        <a href="{% url 'dish_detail_view' id=dish.id %}" class="btn btn-block mt-auto">See more</a>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+  {%else%}
+  <h3>No dishes</h3>
+  {%endif%}
+  {% endblock content %}

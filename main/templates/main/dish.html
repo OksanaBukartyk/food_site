@@ -17,10 +17,11 @@
        
         <a href="{% url 'add_to_favorites' id=dish.id  %}" class="btn-favourite p-2 mt-5">Додати до улюбленого</a>
         {% elif is_favorite %}
-    <p>Цю страву вже додано до улюблених.</p>
+    <p><a href="{% url 'delete_from_favorites' id=dish.id  %}" class="btn btn-outline-danger ">Видалити з улюблених</a></p>
   {% else %}
 
         <p>Щоб зберегти до улюбленого, необхідно авторизуватись.</p>
+        <a href="{% url 'login' %}?next={{ request.path }}" class="btn-favourite p-2 mt-5">Авторизуватись</a>
         {% endif %}
     
 

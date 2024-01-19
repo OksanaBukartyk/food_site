@@ -52,7 +52,7 @@
             {% else %}
             <li class="navbar-element">
                 <img width="40" height="40" src="https://img.icons8.com/carbon-copy/100/user.png" alt="user" />
-                <a class="navbar-btn" href="{% url 'login' %}">Вхід</a>
+                <a class="navbar-btn" href="{% url 'login' %}?next={{ request.path }}">Вхід</a>
             </li>
             {% endif %}
         </ul>

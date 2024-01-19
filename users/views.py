@@ -20,3 +20,10 @@ def register(request):
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+
+
+def login(request):
+    # Логіка обробки логіну
+    next_url = request.GET.get('next', '/')
+    return redirect(next_url)
